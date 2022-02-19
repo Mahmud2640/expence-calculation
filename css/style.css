@@ -1,0 +1,44 @@
+body {
+  padding: 30px 20px;
+  background-color: #cac5c5;
+}
+.heading {
+  color: #31a5ac;
+  text-align: center;
+}
+.heading span {
+  color: rgb(124, 243, 13);
+}
+#calculator-button {
+  margin-left: 120px;
+}
+#save-btn {
+  margin-left: 10px;
+}
+.error {
+  position: relative;
+  color: red;
+  margin-left: 100px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+   -webkit-appearance: none;
+   margin: 0;
+}
+small{
+   display: none;
+}
+
+
+@media screen and (max-width: 480px) {
+  .card {
+    margin-top: 50px;
+  }
+  #calculator-button {
+    margin-left: 100px;
+  }
+  #save-btn {
+    margin-top: 10px;
+    margin-left: 100px;
+  }
+}
