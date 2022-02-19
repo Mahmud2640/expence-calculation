@@ -25,19 +25,16 @@ document
       document.getElementById("error-clothes").style.display = "block";
     }
 
-   
-
     //  calculate expence
 
     const totalExpence = foodAmountTotal + rentAmountTotal + clothesAmountTotal;
 
-    if(totalExpence < incomeAmountTotal){
+    if (totalExpence < incomeAmountTotal) {
       const displayTotalExpence = document.getElementById("total-expenses");
-    displayTotalExpence.innerText = totalExpence;
-  }
-  else{
+      displayTotalExpence.innerText = totalExpence;
+    } else {
       document.getElementById("error-expanses").style.display = "block";
-  }
+    }
 
     //  calculate balance
 
@@ -48,26 +45,45 @@ document
 
 //   secound part
 
+function getBalance(inputField) {
+  const input = document.getElementById(inputField);
+  let amount = input.innerText;
+  const amountTotal = parseFloat(amount);
+  return amountTotal;
+}
+
+/* function totalRemainingBalance() {
+  const balance = document.getElementById("balance");
+  const gettext = balance.innerText;
+  return gettext;
+} */
+
 document.getElementById("save-btn").addEventListener("click", function () {
   const income = getInputValue("input-income");
   const saveAmmount = getInputValue("save-input");
 
   const totalSaveing = (income * saveAmmount) / 100;
 
-  if(totalSaveing < income){
-   const displaysaveBalance = document.getElementById("saving-amount");
-  displaysaveBalance.innerText = totalSaveing;
-}
-else{
-   document.getElementById("error-saveing-amount").style.display = "block";
-}
+  if (totalSaveing < income) {
+    const displaysaveBalance = document.getElementById("saving-amount");
+    displaysaveBalance.innerText = totalSaveing;
+  } else {
+    document.getElementById("error-saveing-amount").style.display = "block";
+  }
 
+  /* ============
+      remaining balance calculation
+    ============  */
 
-
-  const balance = getInputValue("balance");
-  const savingAmmount = getInputValue("saving-amount");
+  const balance = getBalance("balance");
+  const savingAmmount = + document.getElementById("remaining-balance").innerText;
   const remainingBalance = balance - savingAmmount;
   const totalremaning = parseFloat(remainingBalance);
   const displayRemainingBalance = document.getElementById("remaining-balance");
-  displayRemainingBalance.innerText = totalremaning;
+  let remainingDisplay = displayRemainingBalance.innerText = totalremaning;
+  let remainingError = document.getElementById("saving-amount").innerText;
+  // let remainingGetInt = parseInt(remainingError);
+  const remainingTotal = remainingDisplay - remainingError;
+  displayRemainingBalance.innerText = remainingTotal;
 });
+
